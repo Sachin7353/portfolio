@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+
+<body class="bg-gray-100 font-sans">
+
+    <!-- HEADER -->
+
+    <header class="bg-white shadow">
+
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <h1 class="text-2xl font-bold">Aura Store</h1>
+
+            <a href="template-ecommerce.html" class="text-sm text-gray-600 hover:text-black">
+                Continue Shopping
+            </a>
+
+            <a href="#" onclick="openCart()" class="relative text-xl">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <span id="cart-count"
+                    class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
+                    0
+                </span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- CART PAGE -->
+
+    <section class="max-w-6xl mx-auto px-6 py-12">
+
+        <h2 class="text-3xl font-bold mb-8">Your Cart</h2>
+
+        <div id="cart-container" class="space-y-6"></div>
+
+
+        <div class="mt-10 bg-white p-6 rounded-lg shadow flex justify-between items-center">
+
+            <h3 class="text-xl font-semibold">Total</h3>
+
+            <h3 id="page-total" class="text-2xl font-bold">$0</h3>
+
+        </div>
+
+
+        <div class="flex flex-wrap gap-4 mt-6">
+
+            <button onclick="clearCart()" class="bg-red-500 text-white px-6 py-3 rounded hover:bg-red-600">
+                Clear Cart
+            </button>
+
+            <button class="bg-black text-white px-6 py-3 rounded hover:bg-gray-800">
+                Proceed to Checkout
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- CART DRAWER -->
+
+    <div id="cart-drawer"
+        class="fixed top-0 right-0 w-full md:w-[420px] h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-50 flex flex-col">
+
+        <div class="flex justify-between items-center p-6 border-b">
+
+            <h2 class="text-xl font-semibold">Your Cart</h2>
+
+            <button onclick="closeCart()">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+        </div>
+
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-6"></div>
+
+        <div class="border-t p-6">
+
+            <div class="flex justify-between mb-2">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0</span>
+            </div>
+
+            <div class="flex justify-between mb-4">
+                <span>Shipping</span>
+                <span>$10</span>
+            </div>
+
+            <div class="flex justify-between text-lg font-bold mb-6">
+                <span>Total</span>
+                <span id="drawer-total">$0</span>
+            </div>
+
+            <input id="coupon" placeholder="Coupon Code" class="w-full border rounded p-2 mb-3">
+
+            <button onclick="applyCoupon()" class="w-full bg-gray-200 py-2 rounded hover:bg-gray-300 mb-4">
+                Apply Coupon
+            </button>
+
+            <button class="w-full bg-black text-white py-3 rounded hover:bg-gray-800">
+                Checkout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* CART DATA */
+
+        let cart = [
+
+            {
+                name: "Textured Ceramic Vase",
+                price: 85,
+                image: "https://images.unsplash.com/photo-1610701596007-11502861dcfa",
+                qty: 1
+            },
+
+            {
+                name: "Matcha Bowl",
+                price: 45,
+                image: "https://images.unsplash.com/photo-1613946069412-38f7f1ff0b65",
+                qty: 1
+            },
+
+            {
+                name: "Dinner Plate Set",
+                price: 32,
+                image: "https://images.unsplash.com/photo-1622372738982-bdfdf37cae12",
+                qty: 2
+            }
+
+        ];
+
+        let discount = 0;
+
+
+        /* DRAWER */
+
+        function openCart() {
+
+            document.getElementById("cart-drawer")
+                .classList.remove("translate-x-full");
+
+            renderDrawer();
+
+        }
+
+        function closeCart() {
+
+            document.getElementById("cart-drawer")
+                .classList.add("translate-x-full");
+
+        }
+
+
+        /* CART PAGE RENDER */
+
+        function renderCart() {
+
+            const container = document.getElementById("cart-container");
+
+            container.innerHTML = "";
+
+            let total = 0;
+
+            cart.forEach((item, index) => {
+
+                let subtotal = item.price * item.qty;
+
+                total += subtotal;
+
+                container.innerHTML += `
+
+<div class="bg-white p-6 rounded-lg shadow flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
+<div class="flex items-center gap-6">
+
+<img src="${item.image}" class="w-24 h-24 object-cover rounded">
+
+<div>
+
+<h3 class="text-lg font-semibold">${item.name}</h3>
+
+<p class="text-gray-500">$${item.price}</p>
+
+</div>
+
+</div>
+
+<div class="flex items-center gap-4">
+
+<button onclick="decreaseQty(${index})"
+class="bg-gray-200 px-3 py-1 rounded">-</button>
+
+<span class="font-semibold">${item.qty}</span>
+
+<button onclick="increaseQty(${index})"
+class="bg-gray-200 px-3 py-1 rounded">+</button>
+
+</div>
+
+<div class="font-semibold text-lg">
+$${subtotal}
+</div>
+
+<button onclick="removeItem(${index})"
+class="text-red-500 font-semibold">
+Remove
+</button>
+
+</div>
+
+`;
+
+            });
+
+            document.getElementById("page-total").innerText = "$" + total;
+
+            updateCartCount();
+
+        }
+
+
+        /* DRAWER RENDER */
+
+        function renderDrawer() {
+
+            const container = document.getElementById("cart-items");
+
+            container.innerHTML = "";
+
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+
+                subtotal += item.price * item.qty;
+
+                container.innerHTML += `
+
+<div class="flex gap-4">
+
+<img src="${item.image}" class="w-16 h-16 rounded object-cover">
+
+<div class="flex-1">
+
+<h4 class="font-semibold">${item.name}</h4>
+
+<p class="text-sm text-gray-500">$${item.price}</p>
+
+<div class="flex gap-2 mt-2">
+
+<button onclick="decreaseQty(${index})"
+class="bg-gray-200 px-2 rounded">-</button>
+
+<span>${item.qty}</span>
+
+<button onclick="increaseQty(${index})"
+class="bg-gray-200 px-2 rounded">+</button>
+
+</div>
+
+</div>
+
+<button onclick="removeItem(${index})"
+class="text-red-500 text-sm">
+Remove
+</button>
+
+</div>
+
+`;
+
+            });
+
+            let total = subtotal + 10 - discount;
+
+            document.getElementById("cart-subtotal").innerText = "$" + subtotal;
+            document.getElementById("drawer-total").innerText = "$" + total;
+
+        }
+
+
+        /* CART ACTIONS */
+
+        function increaseQty(i) {
+
+            cart[i].qty++;
+
+            renderCart();
+            renderDrawer();
+
+        }
+
+        function decreaseQty(i) {
+
+            if (cart[i].qty > 1) {
+
+                cart[i].qty--;
+
+            }
+
+            renderCart();
+            renderDrawer();
+
+        }
+
+        function removeItem(i) {
+
+            cart.splice(i, 1);
+
+            renderCart();
+            renderDrawer();
+
+        }
+
+        function clearCart() {
+
+            cart = [];
+
+            renderCart();
+            renderDrawer();
+
+        }
+
+
+        /* COUPON */
+
+        function applyCoupon() {
+
+            let code = document.getElementById("coupon").value;
+
+            if (code === "SAVE10") {
+
+                discount = 10;
+
+                alert("Coupon Applied!");
+
+            } else {
+
+                discount = 0;
+
+                alert("Invalid Coupon");
+
+            }
+
+            renderDrawer();
+
+        }
+
+
+        /* CART COUNT */
+
+        function updateCartCount() {
+
+            let count = 0;
+
+            cart.forEach(item => {
+
+                count += item.qty;
+
+            });
+
+            document.getElementById("cart-count").innerText = count;
+
+        }
+
+
+        /* INITIAL LOAD */
+
+        renderCart();
+
+    </script>
+
+</body>
+
+</html>

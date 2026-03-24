@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Agency - Archelos Template</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF3366', // Bold Pink
+                        dark: '#0A0A0A', // Near Black
+                        light: '#ffffff'
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'], // Bold, modern sans
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="font-sans text-gray-800 bg-white antialiased selection:bg-primary selection:text-white">
+
+    <!-- Agency Header -->
+    <header class="absolute top-0 left-0 w-full z-50 py-8 mix-blend-difference text-white">
+        <div class="container mx-auto px-8 max-w-[1400px] flex items-center justify-between">
+            <a href="templates.html" class="font-black text-3xl tracking-tighter uppercase">
+                STUDIO<span class="text-primary">X</span>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-12 font-bold text-sm tracking-widest uppercase">
+                <a href="#" class="hover:text-primary transition-colors">Work</a>
+                <a href="#" class="hover:text-primary transition-colors">Culture</a>
+                <a href="#" class="hover:text-primary transition-colors">Services</a>
+            </nav>
+
+            <a href="#" class="group relative px-6 py-3 font-bold text-sm uppercase tracking-widest overflow-hidden">
+                <span class="relative z-10 group-hover:text-dark transition-colors duration-300">Start Project</span>
+                <div class="absolute inset-0 bg-primary translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0"></div>
+                <div class="absolute inset-0 border border-white group-hover:border-primary transition-colors z-0"></div>
+            </a>
+            
+            <!-- Template Indicator -->
+            <div class="fixed bottom-8 right-8 bg-primary text-white text-[10px] uppercase font-black tracking-widest px-4 py-2 z-50 rounded-full shadow-2xl">
+                Agency Mode
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Agency Hero -->
+        <section class="h-screen relative flex items-center bg-dark overflow-hidden">
+            <!-- Dynamic Background -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-60 scale-105 animate-[pulse_10s_ease-in-out_infinite] grayscale mix-blend-luminosity" alt="Creative Workspace">
+                <div class="absolute inset-0 bg-dark/40"></div>
+            </div>
+            
+            <div class="container mx-auto px-8 max-w-[1400px] relative z-10 w-full">
+                <h1 class="text-[10vw] leading-[0.8] font-black text-white uppercase tracking-tighter max-w-[90%] mix-blend-overlay">
+                    We make <br>
+                    <span class="text-transparent" style="-webkit-text-stroke: 2px white;">Brands</span> <br>
+                    <span class="text-primary italic">Loudly.</span>
+                </h1>
+                
+                <div class="mt-16 flex flex-col md:flex-row md:items-end justify-between max-w-5xl gap-8">
+                    <p class="text-xl md:text-3xl text-gray-300 font-light max-w-2xl leading-tight">
+                        A global creative studio crafting digital experiences that break through the noise.
+                    </p>
+                    
+                    <a href="#work" class="w-24 h-24 rounded-full border border-gray-600 flex items-center justify-center text-white hover:border-primary hover:bg-primary transition-all duration-500 hover:scale-110 flex-shrink-0">
+                        <i class="fa-solid fa-arrow-down text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Work (Asymmetric Grid) -->
+        <section id="work" class="py-32 bg-dark">
+            <div class="container mx-auto px-8 max-w-[1400px]">
+                <div class="flex items-end justify-between mb-24">
+                    <h2 class="text-7xl font-black text-white uppercase tracking-tighter">Selected <br><span class="text-gray-700">Works</span></h2>
+                    <a href="#" class="text-primary font-bold uppercase tracking-widest text-sm hover:text-white transition-colors flex items-center gap-4">
+                        View Archive <span class="w-8 h-[1px] bg-primary block"></span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-12 gap-y-24 gap-x-8">
+                    <!-- Project 1 (Large left) -->
+                    <div class="col-span-12 md:col-span-8 group cursor-pointer scroll-reveal">
+                        <div class="overflow-hidden mb-6 relative">
+                            <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=1200" alt="Nike Campaign" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out filter grayscale group-hover:grayscale-0">
+                            <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-overlay"></div>
+                        </div>
+                        <h3 class="text-3xl font-black text-white uppercase tracking-tight mb-2">Neon Futures</h3>
+                        <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">Campaign / 3D Art</p>
+                    </div>
+
+                    <!-- Project 2 (Small right offset) -->
+                    <div class="col-span-12 md:col-span-4 md:mt-48 group cursor-pointer scroll-reveal" style="transition-delay: 150ms;">
+                        <div class="overflow-hidden mb-6 relative">
+                            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" alt="App Design" class="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-[1.5s] ease-out filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <h3 class="text-3xl font-black text-white uppercase tracking-tight mb-2">Vibe Mobile</h3>
+                        <p class="text-gray-500 font-bold uppercase tracking-widest text-xs">UX/UI / Strategy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-white py-20">
+        <div class="container mx-auto px-8 max-w-[1400px] flex flex-col items-center justify-center text-center">
+            <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8">Let's Talk.</h2>
+            <a href="mailto:hello@studiox.com" class="text-2xl font-bold border-b-2 border-white pb-1 hover:text-dark hover:border-dark transition-colors mb-16">hello@studiox.com</a>
+            
+            <div class="w-full flex justify-between items-center border-t border-white/20 pt-8 mt-8 text-xs font-bold uppercase tracking-widest">
+                <p>&copy; 2026 StudioX. Archelos Premade.</p>
+                <a href="templates.html" class="hover:text-dark transition-colors"><i class="fa-solid fa-arrow-left mr-2"></i> Back</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

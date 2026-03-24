@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archelos - Multipurpose Business Theme</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Tailwind CSS (via CDN for standalone deployment/preview) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#4F46E5", // Customize for presets
+            secondary: "#10B981",
+            dark: "#111827",
+            light: "#F9FAFB",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            serif: ["Playfair Display", "serif"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom Theme Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="font-sans text-gray-800 bg-white antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+
+  <!-- Premium Loader -->
+  <div id="site-loader"
+    class="fixed inset-0 bg-white flex items-center justify-center z-[2000] transition-opacity duration-700">
+    <div class="flex flex-col items-center gap-6">
+      <div class="w-14 h-14 border-4 border-gray-200 border-t-primary rounded-full animate-spin"></div>
+      <h2 class="font-serif text-xl text-dark tracking-wide">
+        Archelos<span class="text-primary">.</span>
+      </h2>
+    </div>
+  </div>
+
+  <!-- Header (Premium: Advanced Builder & Mega Menu support) -->
+  <header id="site-header"
+    class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-5 bg-transparent border-b border-transparent">
+    <div class="container mx-auto px-6 max-w-7xl flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#"
+        class="font-serif text-2xl font-bold text-gray-900 tracking-tight transition-transform hover:scale-105">
+        Archelos<span class="text-primary">.</span>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden lg:flex items-center gap-8">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#features" class="nav-link">Features</a>
+
+        <!-- Mega Menu Trigger -->
+        <div class="group relative py-2">
+          <a href="#" class="nav-link flex items-center gap-1">
+            Templates
+            <i
+              class="fa-solid fa-chevron-down text-xs opacity-70 group-hover:rotate-180 transition-transform duration-300"></i>
+          </a>
+          <!-- Mega Menu Content -->
+          <div
+            class="absolute top-full left-1/2 -translate-x-1/2 w-[600px] mt-2 bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible translate-y-4 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 flex overflow-hidden">
+            <div class="w-1/3 bg-gray-50 p-6 border-r border-gray-100">
+              <h4 class="text-sm font-bold text-gray-900 mb-4 uppercase tracking-wider">
+                Premade Layouts
+              </h4>
+              <p class="text-xs text-gray-500 mb-4 leading-relaxed">
+                Import these stellar starter sites with a single click in
+                WordPress.
+              </p>
+              <a href="templates.html" class="text-primary text-sm font-medium hover:underline">View All <i
+                  class="fa-solid fa-arrow-right text-xs ml-1"></i></a>
+            </div>
+            <div class="w-2/3 p-6 grid grid-cols-2 gap-4">
+              <a href="template-corporate.html" class="block p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                <span class="block text-gray-900 font-semibold text-sm mb-1">Corporate</span>
+                <span class="block text-gray-500 text-xs">Clean & Professional</span>
+              </a>
+              <a href="template-agency.html" class="block p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                <span class="block text-gray-900 font-semibold text-sm mb-1">Agency</span>
+                <span class="block text-gray-500 text-xs text-primary font-medium">✨ Premium</span>
+              </a>
+              <a href="#" class="block p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                <span class="block text-gray-900 font-semibold text-sm mb-1">Portfolio</span>
+                <span class="block text-gray-500 text-xs">Creative Focus</span>
+              </a>
+              <a href="template-ecommerce.html" class="block p-3 rounded-xl hover:bg-gray-50 transition-colors">
+                <span class="block text-gray-900 font-semibold text-sm mb-1">Store</span>
+                <span class="block text-gray-500 text-xs text-primary font-medium">✨ Premium</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#blog" class="nav-link">Blog</a>
+      </nav>
+
+      <!-- Actions -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="login.html" class="text-sm font-medium text-gray-900 hover:text-primary transition-colors">Login</a>
+        <a href="checkout.html" class="btn-primary flex px-5 py-2">Buy Premium</a>
+      </div>
+
+      <!-- Mobile Menu Toggler -->
+      <button id="mobile-menu-btn" class="lg:hidden text-gray-900 text-2xl focus:outline-none">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="lg:hidden fixed inset-0 bg-white z-40 translate-x-full transition-transform duration-500 flex flex-col pt-24 px-6">
+      <button id="close-menu-btn" class="absolute top-6 right-6 text-gray-900 text-3xl focus:outline-none">
+        <i class="fa-solid fa-times"></i>
+      </button>
+      <nav class="flex flex-col gap-6 text-2xl font-serif">
+        <a href="#home" class="mobile-link text-gray-900 hover:text-primary transition-colors">Home</a>
+        <a href="#features" class="mobile-link text-gray-900 hover:text-primary transition-colors">Features</a>
+        <a href="templates.html" class="mobile-link text-gray-900 hover:text-primary transition-colors">Templates</a>
+        <a href="#portfolio" class="mobile-link text-gray-900 hover:text-primary transition-colors">Portfolio</a>
+        <a href="#blog" class="mobile-link text-gray-900 hover:text-primary transition-colors">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-light">
+      <!-- Abstract background shape -->
+      <div
+        class="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 opacity-50 z-0">
+      </div>
+
+      <div class="container mx-auto px-6 max-w-7xl relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+        <div class="hero-content">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-100 text-primary text-xs font-semibold uppercase tracking-wider mb-6 animate-fade-in-up">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            WP Ready Theme
+          </div>
+          <h1 class="text-5xl lg:text-7xl font-serif text-dark leading-tight mb-6 animate-fade-in-up"
+            style="animation-delay: 0.1s">
+            Crafting digital <br />
+            <span class="italic text-primary">masterpieces.</span>
+          </h1>
+          <p class="text-lg text-gray-600 mb-8 max-w-md animate-fade-in-up" style="animation-delay: 0.2s">
+            Elevate your brand with a hyper-minimalist, exceptionally fast,
+            and infinitely customizable WordPress template.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s">
+            <a href="#features" class="btn-primary mt-2">Explore Features</a>
+            <a href="#"
+              class="group text-gray-600 font-medium hover:text-primary transition-colors flex items-center gap-2 mt-2">
+              View Demo
+              <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image relative animate-fade-in mt-10 lg:mt-0" style="animation-delay: 0.4s">
+          <!-- Main image placeholder -->
+          <div class="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-indigo-500/10 z-10 hero-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000"
+              alt="Modern Architecture"
+              class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-1000" />
+          </div>
+          <!-- Floating card (Premium detail) -->
+          <div
+            class="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl z-20 animate-float flex items-center gap-4 border border-gray-50">
+            <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-500">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+              <h4 class="text-sm font-bold text-gray-900">
+                Gutenberg Optimized
+              </h4>
+              <p class="text-xs text-gray-500">100% Native Blocks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features (Free/Freemium/Premium Breakdown) -->
+    <section id="features" class="py-24 bg-white relative">
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
+          <h2 class="text-primary font-semibold tracking-wider uppercase text-sm mb-3">
+            Theme Tiers
+          </h2>
+          <h3 class="text-4xl md:text-5xl font-serif text-dark mb-6">
+            Scale gracefully as you grow.
+          </h3>
+          <p class="text-gray-600 text-lg">
+            Archelos offers a robust foundation for free, with powerful
+            Freemium and Premium capabilities to unlock unlimited potential.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Free -->
+          <div class="feature-card scroll-reveal">
+            <div
+              class="w-16 h-16 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-700 text-2xl mb-8 border border-gray-100">
+              <i class="fa-solid fa-cube"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-dark mb-4">
+              Core Base (Free)
+            </h4>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              Stunning basic homepage layout, flawless responsive design,
+              elegant blog grids, robust standard footer/header, and full
+              Gutenberg editor compatibility.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-3 font-medium">
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-secondary bg-green-50 p-1 rounded-full text-[10px]"></i>
+                Responsive Design
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-secondary bg-green-50 p-1 rounded-full text-[10px]"></i>
+                Blog Support
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-secondary bg-green-50 p-1 rounded-full text-[10px]"></i>
+                Gutenberg Ready
+              </li>
+            </ul>
+          </div>
+
+          <!-- Freemium -->
+          <div class="feature-card scroll-reveal" style="transition-delay: 100ms">
+            <div
+              class="w-16 h-16 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-primary text-2xl mb-8">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-dark mb-4">
+              Enhanced (Freemium)
+            </h4>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              Unlock multiple gorgeous starter templates, sophisticated color
+              presets, granular typography controls, and beautiful built-in
+              portfolio sections.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-3 font-medium">
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-primary bg-indigo-50 p-1 rounded-full text-[10px]"></i>
+                Advanced Typography
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-primary bg-indigo-50 p-1 rounded-full text-[10px]"></i>
+                Portfolio Sections
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-primary bg-indigo-50 p-1 rounded-full text-[10px]"></i>
+                Color Presets
+              </li>
+            </ul>
+          </div>
+
+          <!-- Premium -->
+          <div
+            class="feature-card relative border-gray-100 shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:border-gray-300 scroll-reveal"
+            style="transition-delay: 200ms">
+            <div
+              class="absolute -top-3 right-8 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+              Pro
+            </div>
+            <div
+              class="w-16 h-16 rounded-2xl bg-gray-900 flex items-center justify-center text-white text-2xl mb-8 shadow-md">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+            <h4 class="text-2xl font-bold text-dark mb-4">
+              Ultimate (Premium)
+            </h4>
+            <p class="text-gray-600 text-sm leading-relaxed mb-6">
+              Experience the advanced drag-and-drop header builder, rich mega
+              menus, completely dynamic sections, priority support, and all
+              pro templates.
+            </p>
+            <ul class="text-sm text-gray-600 space-y-3 font-medium">
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-yellow-500 bg-yellow-50 p-1 rounded-full text-[10px]"></i>
+                Mega Menu Builder
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-yellow-500 bg-yellow-50 p-1 rounded-full text-[10px]"></i>
+                Dynamic Sections
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-check text-yellow-500 bg-yellow-50 p-1 rounded-full text-[10px]"></i>
+                Priority Support
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic Sections Preview (Premium Feature) -->
+    <section class="py-32 bg-dark text-white relative overflow-hidden">
+      <!-- Animated background elements -->
+      <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="
+            background-image: radial-gradient(#fff 1px, transparent 1px);
+            background-size: 40px 40px;
+          "></div>
+
+      <div class="container mx-auto px-6 max-w-7xl relative z-10 flex flex-col items-center text-center">
+        <span
+          class="px-3 py-1 border border-white/20 rounded-full text-xs font-semibold tracking-widest uppercase mb-8 scroll-reveal text-gray-300">Premium</span>
+        <h2 class="text-5xl md:text-6xl font-serif mb-6 scroll-reveal" style="transition-delay: 100ms">
+          Build without boundaries.
+        </h2>
+        <p class="text-gray-400 max-w-2xl mb-12 text-lg scroll-reveal" style="transition-delay: 200ms">
+          Archelos Premium introduces
+          <strong class="text-white font-medium">Dynamic Sections</strong>.
+          Intelligently query custom post types, dynamically populate content,
+          and style it visually without writing a single line of code.
+        </p>
+        <div class="scroll-reveal" style="transition-delay: 300ms">
+          <a href="dynamic.html"
+            class="btn-primary bg-white text-dark hover:bg-gray-100 border-transparent shadow-[0_0_30px_rgba(255,255,255,0.2)]">Discover
+            Premium APIs</a>
+        </div>
+      </div>
+
+      <!-- Floating UI mockups -->
+      <div class="mt-20 w-full max-w-5xl mx-auto relative h-[400px] scroll-reveal object-cover"
+        style="transition-delay: 400ms">
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-full bg-white/5 rounded-t-[2.5rem] border-t border-x border-white/10 backdrop-blur-md flex items-start justify-center pt-8 shadow-[0_-20px_80px_rgba(79,70,229,0.2)]">
+          <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&q=80&w=1200"
+            alt="UI Dashboard"
+            class="w-[90%] rounded-2xl shadow-2xl opacity-80 transform transition-transform duration-700 hover:-translate-y-4" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio (Freemium Feature) -->
+    <section id="portfolio" class="py-24 bg-light">
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 scroll-reveal">
+          <div>
+            <h2 class="text-primary font-semibold tracking-wider uppercase text-sm mb-3">
+              Showcase
+            </h2>
+            <h3 class="text-4xl md:text-5xl font-serif text-dark">
+              Selected Works
+            </h3>
+          </div>
+          <a href="templates.html"
+            class="inline-flex items-center gap-2 font-medium text-gray-600 hover:text-primary transition-colors mt-6 md:mt-0">
+            View Complete Portfolio <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <!-- Project 1 -->
+          <div
+            class="group relative bg-white/5 backdrop-blur-xl border border-white/10 p-2 rounded-2xl overflow-hidden scroll-reveal">
+            <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                alt="Corporate Demo"
+                class="w-full h-full object-cover transform min-h-full group-hover:scale-110 transition-transform duration-[1.5s] ease-out object-top" />
+              <div
+                class="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="template-corporate.html"
+                  class="bg-white text-dark px-6 py-2.5 rounded-xl font-bold text-sm tracking-wide shadow-xl transform scale-90 group-hover:scale-100 transition-all duration-300 hover:bg-primary hover:text-white">View
+                  Demo</a>
+              </div>
+            </div>
+            <div class="p-6">
+              <span class="text-primary font-medium text-sm mb-2 uppercase tracking-wider">Corporate Identity</span>
+              <h4 class="text-3xl font-bold text-dark mb-3 font-serif">
+                FinTech Innovators
+              </h4>
+              <p class="text-gray-300 text-sm max-w-sm">
+                A highly performant site crafted for a leading finance firm,
+                focusing on institutional trust.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div
+            class="group relative bg-white/5 backdrop-blur-xl border border-white/10 p-2 rounded-2xl overflow-hidden scroll-reveal"
+            style="transition-delay: 150ms">
+            <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800"
+                alt="Agency Demo"
+                class="w-full h-full object-cover transform min-h-full group-hover:scale-110 transition-transform duration-[1.5s] ease-out object-top" />
+              <div
+                class="absolute inset-0 bg-dark/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <a href="template-agency.html"
+                  class="bg-white text-dark px-6 py-2.5 rounded-xl font-bold text-sm tracking-wide shadow-xl transform scale-90 group-hover:scale-100 transition-all duration-300 hover:bg-primary hover:text-white">View
+                  Demo</a>
+              </div>
+            </div>
+            <div class="p-6">
+              <span class="text-primary font-medium text-sm mb-2 uppercase tracking-wider">Creative Studio</span>
+              <h4 class="text-3xl font-bold text-dark mb-3 font-serif">
+                Vanguard Media
+              </h4>
+              <p class="text-gray-600 text-sm max-w-sm mb-5">
+                A high-impact, immersive web experience built for modern creative agencies.
+              </p>
+              <a href="template-agency.html"
+                class="inline-flex items-center text-primary font-bold hover:text-dark transition-colors">Explore <i
+                  class="fa-solid fa-arrow-right ml-2 text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog section (Free feature) -->
+    <section id="blog" class="py-24 bg-white border-t border-gray-100">
+      <div class="container mx-auto px-6 max-w-7xl">
+        <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
+          <h2 class="text-primary font-semibold tracking-wider uppercase text-sm mb-3">
+            Insights
+          </h2>
+          <h3 class="text-4xl md:text-5xl font-serif text-dark mb-6">
+            Latest Journal Entries
+          </h3>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Article 1 -->
+          <a href="single_page_blog.html?id=1">
+            <article class="group cursor-pointer scroll-reveal">
+              <div class="relative rounded-[1.5rem] overflow-hidden mb-6 aspect-[4/3] bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=600"
+                  alt="Macbook"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                <div
+                  class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-dark uppercase tracking-wider">
+                  Design
+                </div>
+              </div>
+              <div class="flex items-center gap-4 text-xs text-gray-500 mb-4 font-medium uppercase tracking-wide">
+                <span>Oct 12, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                <span>5 Min Read</span>
+              </div>
+              <h4
+                class="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors font-serif leading-snug">
+                The Philosophy of Minimalist Digital Experiences
+              </h4>
+              <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                Why removing clutter isn't just an aesthetic choice, but a
+                fundamental improvement in user psychology and conversion. We
+                explore empirical data across hundred of sites.
+              </p>
+            </article>
+          </a>
+
+          <!-- Article 2 -->
+          <a href="single_page_blog.html?id=2">
+            <article class="group cursor-pointer scroll-reveal" style="transition-delay: 100ms">
+              <div class="relative rounded-[1.5rem] overflow-hidden mb-6 aspect-[4/3] bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600"
+                  alt="Code"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                <div
+                  class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-dark uppercase tracking-wider">
+                  Development
+                </div>
+              </div>
+              <div class="flex items-center gap-4 text-xs text-gray-500 mb-4 font-medium uppercase tracking-wide">
+                <span>Oct 08, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                <span>8 Min Read</span>
+              </div>
+              <h4
+                class="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors font-serif leading-snug">
+                Mastering Gutenberg for Complex Layouts
+              </h4>
+              <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                A technical deep dive into expanding Native WordPress blocks to
+                handle agency-level layout requirements efficiently without
+                touching classic page builders.
+              </p>
+            </article>
+          </a>
+
+          <!-- Article 3 -->
+          <a href="single_page_blog.html?id=3">
+            <article class="group cursor-pointer scroll-reveal" style="transition-delay: 200ms">
+              <div class="relative rounded-[1.5rem] overflow-hidden mb-6 aspect-[4/3] bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600"
+                  alt="Team"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+                <div
+                  class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1.5 rounded-full text-xs font-bold text-dark uppercase tracking-wider">
+                  Business
+                </div>
+              </div>
+              <div class="flex items-center gap-4 text-xs text-gray-500 mb-4 font-medium uppercase tracking-wide">
+                <span>Oct 02, 2026</span>
+                <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+                <span>4 Min Read</span>
+              </div>
+              <h4
+                class="text-2xl font-bold text-dark mb-4 group-hover:text-primary transition-colors font-serif leading-snug">
+                Scaling Client Delivery with Components
+              </h4>
+              <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                How adopting a strict template-first architecture allowed our
+                agency to triple our monthly output without hiring, and how you
+                can do it too.
+              </p>
+            </article>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium CTA Section -->
+  <section class="relative py-28 bg-dark text-white overflow-hidden">
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary rounded-full blur-3xl opacity-20">
+    </div>
+    <div class="relative max-w-4xl mx-auto text-center px-6">
+      <span class="text-xs uppercase tracking-widest text-gray-400 font-semibold">
+        Upgrade Today
+      </span>
+      <h2 class="text-4xl md:text-5xl font-serif mt-4 mb-6 leading-tight">
+        Build faster with <span class="text-primary italic">Archelos Premium</span>
+      </h2>
+      <p class="text-gray-300 text-lg mb-10">
+        Unlock advanced layouts, mega menus, dynamic sections and priority support.
+      </p>
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a href="#"
+          class="bg-white text-dark px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition shadow-lg">
+          Buy Premium
+        </a>
+        <a href="#" class="border border-white/30 px-8 py-4 rounded-xl font-semibold hover:border-white transition">
+          View Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-50 border-t border-gray-200 pt-20 pb-10">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+        <!-- Branding -->
+        <div class="lg:col-span-4">
+          <a href="#" class="font-serif text-3xl font-bold text-dark tracking-tight mb-6 block">Archelos<span
+              class="text-primary">.</span></a>
+          <p class="text-gray-500 text-sm leading-relaxed mb-8 pr-4">
+            A purposefully crafted multi-purpose WordPress theme built for
+            agencies, freelancers, and businesses who value design and speed.
+          </p>
+          <div class="flex gap-3">
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all shadow-sm"><i
+                class="fa-brands fa-twitter"></i></a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all shadow-sm"><i
+                class="fa-brands fa-dribbble"></i></a>
+            <a href="#"
+              class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:text-primary hover:border-primary transition-all shadow-sm"><i
+                class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Links 1 -->
+        <div class="lg:col-span-2 lg:col-start-6">
+          <h5 class="text-dark font-bold mb-6 text-sm uppercase tracking-wider">
+            Product
+          </h5>
+          <ul class="space-y-4 text-sm text-gray-500 font-medium">
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Features</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Starter Sites
+                <span class="ml-2 text-[10px] bg-indigo-50 text-primary px-2 py-0.5 rounded-full">New</span></a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Pricing</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Showcase</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Changelog</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Links 2 -->
+        <div class="lg:col-span-2">
+          <h5 class="text-dark font-bold mb-6 text-sm uppercase tracking-wider">
+            Resources
+          </h5>
+          <ul class="space-y-4 text-sm text-gray-500 font-medium">
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Documentation</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Blog</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Community</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Affiliates</a>
+            </li>
+            <li>
+              <a href="#" class="hover:text-primary transition-colors">Contact Support</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Subscribe -->
+        <div class="lg:col-span-4">
+          <h5 class="text-dark font-bold mb-6 text-sm uppercase tracking-wider">
+            Newsletter
+          </h5>
+          <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+            Join 15,000+ creators who get our weekly updates and exclusive
+            resources.
+          </p>
+          <form class="flex relative shadow-sm rounded-xl overflow-hidden">
+            <input type="email" placeholder="Enter your email address"
+              class="bg-white border-y border-l border-gray-300 w-full px-5 py-3.5 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary z-10 transition-colors" />
+            <button type="submit"
+              class="bg-gray-900 border border-gray-900 text-white px-6 py-3.5 text-sm font-medium hover:bg-primary hover:border-primary transition-colors z-20">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Bottom Footer -->
+      <div
+        class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-medium">
+        <p>&copy; 2026 Archelos Theme. All rights reserved.</p>
+        <div class="flex gap-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress" class="fixed top-0 left-0 h-[3px] bg-primary w-0 z-[1000]"></div>
+
+  <!-- Back To Top Button -->
+  <button id="backToTop"
+    class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all hover:bg-indigo-700 z-[999]">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/script.js"></script>
+  <script src="js/SCROLL_PROGRESS.js"></script>
+  <script>
+    function openBlog(title, image, category, date, readTime) {
+      const blogData = {
+        title: title,
+        image: image,
+        category: category,
+        date: date,
+        readTime: readTime
+      };
+      localStorage.setItem("selectedBlog", JSON.stringify(blogData));
+    }
+  </script>
+</body>
+
+</html>

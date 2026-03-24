@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Templates - Archelos Theme</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        dark: '#111827',
+                        light: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased min-h-screen selection:bg-primary selection:text-white">
+
+    <!-- Header (Premium: Advanced Builder & Mega Menu support) -->
+    <header id="site-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-5 bg-white shadow-sm border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-7xl flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="font-serif text-2xl font-bold text-gray-900 tracking-tight transition-transform hover:scale-105">
+                Archelos<span class="text-primary">.</span>
+            </a>
+
+            <!-- Navigation -->
+            <nav class="hidden lg:flex items-center gap-8">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="templates.html" class="nav-link active">Templates</a>
+                <a href="dynamic.html" class="nav-link">Dynamic</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="login.html" class="text-sm font-medium text-gray-900 hover:text-primary transition-colors">My Account</a>
+                <a href="checkout.html" class="btn-primary flex px-5 py-2">Buy Premium</a>
+            </div>
+            
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-900 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu (simplified for subpage) -->
+        <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-white z-40 translate-x-full transition-transform duration-500 flex flex-col pt-24 px-6">
+             <button id="close-menu-btn" class="absolute top-6 right-6 text-gray-900 text-3xl focus:outline-none">
+                <i class="fa-solid fa-times"></i>
+             </button>
+             <nav class="flex flex-col gap-6 text-2xl font-serif">
+                 <a href="index.html" class="mobile-link text-gray-900 hover:text-primary transition-colors">Home</a>
+                 <a href="templates.html" class="mobile-link text-primary transition-colors">Templates</a>
+                 <a href="dynamic.html" class="mobile-link text-gray-900 hover:text-primary transition-colors">Dynamic</a>
+                 <a href="login.html" class="mobile-link text-gray-900 hover:text-primary transition-colors mt-8 text-lg font-sans">Login</a>
+                 <a href="checkout.html" class="mobile-link text-gray-900 hover:text-primary transition-colors text-lg font-sans">Buy Premium</a>
+             </nav>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center max-w-2xl mx-auto mb-16 animate-fade-in-up">
+                <span class="px-3 py-1 bg-indigo-50 border border-indigo-100 text-primary rounded-full text-xs font-bold tracking-widest uppercase mb-6 inline-block">Premium Library</span>
+                <h1 class="text-4xl md:text-5xl font-serif text-dark mb-6">Start with a masterpiece.</h1>
+                <p class="text-gray-600 text-lg">Import any of our meticulously crafted premium templates with a single click. Everything you see here is included.</p>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12 animate-fade-in-up" id="filter-buttons" style="animation-delay: 0.1s;">
+                <button onclick="filterTemplates('all')" class="filter-btn active px-5 py-2.5 rounded-full bg-dark text-white text-sm font-medium transition-colors">All Sites</button>
+                <button onclick="filterTemplates('business')" class="filter-btn px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 hover:border-gray-400 text-sm font-medium transition-colors">Corporate</button>
+                <button onclick="filterTemplates('agency')" class="filter-btn px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 hover:border-gray-400 text-sm font-medium transition-colors">Agency</button>
+                <button onclick="filterTemplates('ecommerce')" class="filter-btn px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 hover:border-gray-400 text-sm font-medium transition-colors">eCommerce</button>
+                <button onclick="filterTemplates('portfolio')" class="filter-btn px-5 py-2.5 rounded-full bg-white border border-gray-200 text-gray-600 hover:border-gray-400 text-sm font-medium transition-colors">Portfolio</button>
+            </div>
+
+            <!-- Templates Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Template 1 -->
+                <div class="template-item template-business group relative bg-white rounded-3xl p-3 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Corporate" class="w-full h-full object-cover transform min-h-full group-hover:scale-110 transition-transform duration-1000 ease-out object-top">
+                        <div class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                            <button onclick="importTemplate('Corporate Pro')" class="bg-primary text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-white hover:text-dark transition-colors">Import</button>
+                            <a href="template-corporate.html" class="bg-white/20 backdrop-blur text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-white hover:text-dark transition-colors inline-block">Preview</a>
+                        </div>
+                    </div>
+                    <div class="px-3 pb-3 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-dark mb-1">Corporate Pro</h3>
+                            <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">Business</p>
+                        </div>
+                        <span class="text-primary text-xs font-bold uppercase tracking-wider bg-indigo-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-crown mr-1"></i> Premium</span>
+                    </div>
+                </div>
+
+                <!-- Template 2 -->
+                <div class="template-item template-agency group relative bg-white rounded-3xl p-3 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800" alt="Agency" class="w-full h-full object-cover transform min-h-full group-hover:scale-110 transition-transform duration-1000 ease-out object-top">
+                        <div class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                            <button onclick="importTemplate('Creative Agency')" class="bg-primary text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-white hover:text-dark transition-colors">Import</button>
+                            <a href="template-agency.html" class="bg-white/20 backdrop-blur text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-white hover:text-dark transition-colors inline-block">Preview</a>
+                        </div>
+                    </div>
+                    <div class="px-3 pb-3 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-dark mb-1">Creative Agency</h3>
+                            <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">Agency</p>
+                        </div>
+                        <span class="text-primary text-xs font-bold uppercase tracking-wider bg-indigo-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-crown mr-1"></i> Premium</span>
+                    </div>
+                </div>
+
+                <!-- Template 3 -->
+                <div class="template-item template-ecommerce group relative bg-white rounded-3xl p-3 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in-up" style="animation-delay: 0.4s;">
+                    <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800" alt="eCommerce" class="w-full h-full object-cover transform min-h-full group-hover:scale-110 transition-transform duration-1000 ease-out object-top">
+                        <div class="absolute inset-0 bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+                            <button onclick="importTemplate('Modern Store')" class="bg-primary text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-white hover:text-dark transition-colors">Import</button>
+                            <a href="template-ecommerce.html" class="bg-white/20 backdrop-blur text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:bg-white hover:text-dark transition-colors inline-block">Preview</a>
+                        </div>
+                    </div>
+                    <div class="px-3 pb-3 flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold text-dark mb-1">Modern Store</h3>
+                            <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">eCommerce</p>
+                        </div>
+                        <span class="text-primary text-xs font-bold uppercase tracking-wider bg-indigo-50 px-2.5 py-1 rounded-full"><i class="fa-solid fa-crown mr-1"></i> Premium</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Import Simulation Modal -->
+    <div id="import-modal" class="fixed inset-0 bg-dark/80 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <div class="bg-white p-10 rounded-3xl max-w-md w-full mx-4 text-center transform scale-95 transition-transform duration-300 shadow-2xl" id="import-modal-content">
+            <h3 class="text-2xl font-serif font-bold text-dark mb-6">Importing <span id="template-name" class="text-primary"></span>...</h3>
+            
+            <div class="w-full bg-gray-100 rounded-full h-2 mb-4 overflow-hidden relative">
+                <div class="bg-primary h-2 rounded-full w-0 transition-all ease-linear" id="progress-bar"></div>
+            </div>
+            
+            <p id="import-status" class="text-sm text-gray-500 font-medium animate-pulse">Fetching assets...</p>
+        </div>
+        
+        <div class="bg-white p-10 rounded-3xl max-w-sm w-full mx-4 text-center hidden transform scale-95 transition-transform duration-300" id="success-content">
+            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-500 text-3xl shadow-inner border border-green-200">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-3xl font-serif font-bold text-dark mb-3">Import Complete!</h3>
+            <p class="text-gray-500 mb-8">The starter template has been successfully applied to your site.</p>
+            <a href="index.html" class="block w-full bg-dark text-white font-medium py-3 rounded-xl hover:bg-primary transition-colors">View Site</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        function importTemplate(name) {
+            document.getElementById('template-name').textContent = name;
+            const modal = document.getElementById('import-modal');
+            const modalContent = document.getElementById('import-modal-content');
+            const successContent = document.getElementById('success-content');
+            const progressBar = document.getElementById('progress-bar');
+            const statusText = document.getElementById('import-status');
+            
+            // Reset
+            successContent.classList.add('hidden');
+            modalContent.classList.remove('hidden');
+            progressBar.style.width = '0%';
+            progressBar.style.transitionDuration = '0ms';
+            
+            // Show Modal
+            modal.classList.remove('opacity-0', 'invisible');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+            
+            // Simulate progression
+            setTimeout(() => {
+                progressBar.style.transitionDuration = '800ms';
+                progressBar.style.width = '30%';
+                statusText.textContent = 'Installing plugins...';
+            }, 500);
+
+            setTimeout(() => {
+                progressBar.style.transitionDuration = '1500ms';
+                progressBar.style.width = '70%';
+                statusText.textContent = 'Importing layout & content...';
+            }, 1500);
+
+            setTimeout(() => {
+                progressBar.style.transitionDuration = '500ms';
+                progressBar.style.width = '100%';
+                statusText.textContent = 'Finalizing...';
+            }, 3000);
+
+            setTimeout(() => {
+                modalContent.classList.add('hidden');
+                successContent.classList.remove('hidden');
+                successContent.classList.remove('scale-95');
+                successContent.classList.add('scale-100');
+            }, 3600);
+        }
+
+        function filterTemplates(category) {
+            // Update button styles
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-dark', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-600');
+            });
+            event.target.classList.remove('bg-white', 'text-gray-600');
+            event.target.classList.add('bg-dark', 'text-white');
+
+            // Filter items
+            const items = document.querySelectorAll('.template-item');
+            items.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    if (item.classList.contains(`template-${category}`)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
